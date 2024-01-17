@@ -29,12 +29,13 @@ const myWrap = ref([
 <template >
   <div class="flex">
     <SideBar />
-    <div class="bg-[#0A0C11] w-full  ">
+
+    <div class="bg-[#0A0C11] w-full h-screen ">
       <NavBar />
       <div class="text-white ">
         <h3 class="text-4xl flex px-32 py-10 ">ჩემი შეფუთვა</h3>
         <div class="px-32 ">
-          <div class=" bg-[#1B2532] rounded-3xl flex flex-row px-32 gap-x-32  ">
+          <div class=" bg-[#1B2532] rounded-3xl flex flex-row justify-between px-32    ">
             <div v-for="item in myWrap" :key="item.index"
               class=" flex text-center pt-6 pb-20 gap-y-12 text-white flex-col">
               <span class="text-xl">{{ item.title }}</span>
