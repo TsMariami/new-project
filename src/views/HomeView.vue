@@ -2,6 +2,16 @@
 import { ref } from 'vue'
 import SideBar from '../components/SideBar.vue'
 import NavBar from '../components/NavBar.vue'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { Pie } from 'vue-chartjs'
+import { data, options } from '../chartConfig.ts'
+
+ChartJS.register(ArcElement, Tooltip, Legend)
+
+const components = defineProps(['Pie'])
+const chartData = ref(data)
+const chartOptions = ref(options)
+
 
 const myWrap = ref([
   {
@@ -32,7 +42,8 @@ const myWrap = ref([
 
     <div class="bg-[#0A0C11] w-full h-screen ">
       <NavBar />
-      <div class="text-white ">
+      <div class="flex flex-col gap-y-32">
+        <div class="text-white ">
         <h3 class="text-4xl flex px-32 py-10 ">ჩემი შეფუთვა</h3>
         <div class="px-32 ">
           <div class=" bg-[#1B2532] rounded-3xl flex flex-row justify-between px-32    ">
@@ -45,10 +56,20 @@ const myWrap = ref([
         </div>
       </div>
 
+      <div class="w-96 ml-36 ">
+        <div class=" bg-[#1B2532] rounded-3xl py-6">
+          <h3 class="text-white text-2xl px-16 pb-6">ტოპ მასწავლებლები</h3>
+          <div class=" ">
+            <Pie class="w-64" :data="chartData" :options="chartOptions" />
+          </div>
+        </div>
+      </div>
+      </div>
+      
 
-      <div>
-    <canvas id="myChart" ref="myChart"></canvas>
-  </div>
+
+
+
     </div>
   </div>
 </template>
